@@ -6,16 +6,16 @@ import image3 from "../images/banner2.jpg";
 
 const images = [
   {
-    link: image1,
+    link: image2,
   },
   {
     link: image2,
   },
   {
-    link: image3,
+    link: image2,
   },
   {
-    link: image1,
+    link: image2,
   },
   {
     link: image2,
