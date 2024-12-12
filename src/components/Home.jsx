@@ -1,0 +1,74 @@
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import image1 from "../images/carousel1.avif";
+import image2 from "../images/mn-dairy1.jpg";
+import image3 from "../images/banner2.jpg";
+
+const images = [
+  {
+    link: image1,
+  },
+  {
+    link: image2,
+  },
+  {
+    link: image3,
+  },
+  {
+    link: image1,
+  },
+  {
+    link: image2,
+  },
+];
+
+const responsive = {
+  superLargeDesktop: {
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
+
+const Home = () => {
+  return (
+    <div className="relative w-full">
+      <Carousel
+        responsive={responsive}
+        infinite={true}
+        autoPlay={true}
+        autoPlaySpeed={3000}
+        // Adjust some of the carousel settings if needed
+        swipeable={true}
+        draggable={true}
+      >
+        {images.map((img, idx) => (
+          <div key={idx} className="flex justify-center">
+            <img
+              src={img.link}
+              alt={`Carousel image ${idx + 1}`}
+              className="w-full h-auto object-cover"
+              style={{
+                maxHeight: "80vh", // Maintain a max height for larger screens
+                objectFit: "cover", // Ensures images cover the space properly
+              }}
+            />
+          </div>
+        ))}
+      </Carousel>
+    </div>
+  );
+};
+
+export default Home;
