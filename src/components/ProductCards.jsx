@@ -1,6 +1,7 @@
 import { useState } from "react";
 import data from "../data/data.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import { TiPlus } from "react-icons/ti";
 
 const listItems = [
   {
@@ -179,8 +180,12 @@ const ProductCards = () => {
           productData.map((item) => (
             <div
               key={item.id}
-              className="border-2 border-gray-300 rounded-xl lg:w-[20%] py-5 m-[1%] p-4 flex flex-col items-center bg-grayForCards cursor-pointer"
+              className="border-2 border-gray-300 rounded-xl lg:w-[20%] py-5 m-[1%] p-4 flex flex-col items-center bg-grayForCards cursor-pointer relative"
             >
+              {/* 10% Off Badge */}
+              {/* <div className="absolute top-0 left-0 text-white text-xs font-normal text-white-400 bg-greenForBuyNow px-2 py-1 rounded-lg">
+                10% <br /> Off
+              </div> */}
               <div
                 className="flex flex-col items-center"
                 onClick={() => navigate(`/products-details/${item.id}`)}
@@ -194,13 +199,25 @@ const ProductCards = () => {
                 <p className="font-medium lg:text-[17px] md:text-[17px] sm:text-[15px] sm:font-normal text-grayForPageHeading ">
                   {item.name}
                 </p>
-                <p className="text-grayForPageHeading lg:text-[14px] md:text-[14px] sm:text-[12px]">
-                  ₹{item.price} / {item.unit}
+                <p className="text-grayForPageHeading lg:text-[14px] md:text-[14px] sm:text-[12px] ">
+                  <span className="line-through">₹{item.price}</span>
+                  <span className="ml-3">
+                    ₹{item.discountedPrice} / {item.unit}
+                  </span>
                 </p>
               </div>
-              <button className="mt-10 lg:px-4 lg:py-[4px] md:px-4 md:py-[4px] sm:px-2 sm:py-[2px] sm:text-[14px] rounded-lg bg-green-400 text-white-400 hover:bg-green-600 transition duration-300">
-                Add to Cart
-              </button>
+              <div className="flex flex-row justify-between items-center mt-5 w-full">
+                <div>
+                  {item.instock === true ? (
+                    <p className="text-green-400 text-xl">In Stock</p>
+                  ) : (
+                    <p>Out of Stock</p>
+                  )}
+                </div>
+                <button className="text-greenForPlus text-xl bg-white-400 p-2 rounded-full shadow-xl shadow-gray-400">
+                  <TiPlus />
+                </button>
+              </div>
             </div>
           ))
         ) : (

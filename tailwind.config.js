@@ -73,7 +73,8 @@ export default {
       grayForHeadersLink: "#E8E9EB",
       grayForPageHeading: "#374151",
       grayForFooterLinks: "#6B728F",
-      greenForBuyNow: "#84CC16"
+      greenForBuyNow: "#84CC16",
+      greenForPlus: "#47B624"
     },
 
   },
