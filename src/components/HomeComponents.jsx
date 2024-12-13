@@ -3,6 +3,7 @@ import Home from "./Home";
 import Products from "./Products";
 import ProductCards from "./ProductCards";
 import NewArrivals from "./NewArrivals";
+import { BestSeller } from "./BestSeller";
 
 const HomeComponents = () => {
   return (
@@ -10,6 +11,7 @@ const HomeComponents = () => {
       <Home />
       <Products />
       <ProductCards />
+      <BestSeller />
       <NewArrivals />
     </div>
   );

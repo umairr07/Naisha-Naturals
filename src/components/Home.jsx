@@ -1,24 +1,24 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import image1 from "../images/carousel1.avif";
-import image2 from "../images/mn-dairy1.jpg";
-import image3 from "../images/banner2.jpg";
+import image1 from "../images/mn-dairy1.jpg";
+import image2 from "../images/cowmilkproducts1.png";
+import image3 from "../images/home-image.jpg";
 
 const images = [
   {
-    link: image2,
+    link: image1,
   },
   {
-    link: image2,
+    link: image1,
   },
   {
-    link: image2,
+    link: image1,
   },
   {
-    link: image2,
+    link: image1,
   },
   {
-    link: image2,
+    link: image1,
   },
 ];
 

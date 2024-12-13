@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Navlinks from "./Navlinks";
-import { BiMenu, BiX } from "react-icons/bi";
+import { BiMenu, BiMenuAltRight, BiX } from "react-icons/bi";
 import { useState } from "react";
 
 const Header = () => {
@@ -15,9 +15,12 @@ const Header = () => {
       <div className="fixed top-0 left-0 right-0 z-50 bg-white-400 shadow-md">
         <div className="flex justify-between flex-wrap lg:px-10 sm:px-3 py-6 border-b border-white-400 items-center">
           <div>
-            <h1 className="lg:text-xl sm:text-[18px] font-semibold italic text-green-400">
+            <Link
+              to={"/"}
+              className="lg:text-xl sm:text-[18px] font-semibold italic text-green-400"
+            >
               Naisha Naturals
-            </h1>
+            </Link>
             {/* <img src= alt="" /> */}
           </div>
 
@@ -32,14 +35,14 @@ const Header = () => {
 
             <div className="lg:hidden md:hidden sm:mt-2">
               <button onClick={handleToggle}>
-                {isOpen ? <BiX size={30} /> : <BiMenu size={30} />}
+                {isOpen ? <BiX size={30} /> : <BiMenuAltRight size={30} />}
               </button>
             </div>
           </div>
         </div>
       </div>
       {isOpen && (
-        <div className="flex flex-col flex-wrap gap-3 justify-end basis-full items-center mt-28">
+        <div className="flex flex-col flex-wrap gap-3 justify-end basis-full shadow-xl rounded-xl items-center mt-28 py-5">
           <Navlinks />
         </div>
       )}
