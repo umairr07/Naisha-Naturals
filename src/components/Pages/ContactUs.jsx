@@ -22,7 +22,7 @@ const ContactUs = () => {
         {/* Contact Information */}
         <div className="sm:w-full lg:grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 sm:flex sm:flex-col-reverse">
           <div className="">
-            <h2 className="lg:text-2xl sm:text-xl text-grayForPageHeading mb-4">
+            <h2 className="lg:text-3xl font-bold sm:text-xl text-grayForPageHeading mb-4">
               Contact Us
             </h2>
             <p className="mb-4 text-grayForPageHeading sm:text-[15px] lg:text-[17px]">
@@ -31,7 +31,7 @@ const ContactUs = () => {
             </p>
             <div className="space-y-4 text-grayForPageHeading sm:text-[15px] lg:text-[17px]">
               <div className="flex items-center gap-4">
-                <FaMapMarkerAlt className="text-blue-600 text-xl" />
+                <FaMapMarkerAlt className="text-green-600 text-xl" />
                 <p>1234 Dummy Street, Fake City, Country, 56789</p>
               </div>
               <div className="flex items-center gap-4">
@@ -39,18 +39,18 @@ const ContactUs = () => {
                 <p>+1 234 567 890</p>
               </div>
               <div className="flex items-center gap-4">
-                <FaEnvelope className="text-red-600 text-xl" />
+                <FaEnvelope className="text-green-600 text-xl" />
                 <p>contact@dummyemail.com</p>
               </div>
             </div>
             <div className="flex mt-6 gap-4">
-              <a href="#" className="text-blue-600 text-xl hover:text-blue-800">
+              <a href="#" className="text-xl hover:text-blue-800">
                 <FaFacebook />
               </a>
-              <a href="#" className="text-blue-400 text-xl hover:text-blue-600">
+              <a href="#" className="text-xl hover:text-blue-800">
                 <FaTwitter />
               </a>
-              <a href="#" className="text-pink-600 text-xl hover:text-pink-800">
+              <a href="#" className="text-xl hover:text-pink-800">
                 <FaInstagram />
               </a>
             </div>
@@ -58,11 +58,11 @@ const ContactUs = () => {
 
           {/* Contact Form */}
           <div>
-            <h2 className="lg:text-2xl sm:text-xl mb-4 text-grayForPageHeading">
+            <h2 className="lg:text-3xl font-bold sm:text-xl mb-4 text-grayForPageHeading">
               Send Us a Message
             </h2>
             <div>
-              <form className="bg-white border-2 border-gray-300 shadow-sm rounded px-8 pt-6 pb-8">
+              <form className="bg-white  shadow-xl rounded px-8 pt-6 pb-8">
                 <div className="mb-4">
                   <label
                     className="block text-sm mb-2 text-grayForPageHeading"

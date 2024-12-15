@@ -1,7 +1,9 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { handleSuccess } from "../../utils/Toast";
 
 const Signup = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-50 flex items-center justify-center">
       <div className="bg-white-400 shadow-lg rounded-lg p-8 lg:w-full md:w-full  sm:w-[85%] max-w-md">
@@ -42,6 +44,10 @@ const Signup = () => {
           <button
             type="submit"
             className="w-full bg-green-400 text-white-400 lg:py-3 lg:px-4 sm:py-2 sm:px-3 md:py-3 md:px-4 rounded-lg font-medium hover:bg-green-600 transition duration-300"
+            // onClick={() => {
+            //   handleSuccess("Signup Successfull!!");
+            //   navigate("/login");
+            // }}
           >
             Signup
           </button>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-300 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-green-50 flex items-center justify-center">
       <div className="bg-white-400 shadow-lg rounded-lg p-8 lg:w-full md:w-full  sm:w-[85%] max-w-md">
         <h2 className="lg:text-3xl md:text-3xl sm:text-2xl font-semibold text-center text-green-600 mb-6">
           Welcome Back!

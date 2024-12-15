@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import data from "../data/data.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import { TiPlus } from "react-icons/ti";
+import Cart from "./Pages/Cart.jsx";
+import { CartContext } from "../context/CartContext.jsx";
+import { handleSuccess } from "../utils/Toast.jsx";
 
 const listItems = [
   {
@@ -37,6 +40,8 @@ const ProductCards = () => {
   const route = useLocation();
   const navigate = useNavigate();
 
+  const { addToCart } = useContext(CartContext);
+
   const [isOpen, setIsOpen] = useState(false);
   const [isPriceOpen, setIsPriceOpen] = useState(false);
 
@@ -71,6 +76,19 @@ const ProductCards = () => {
     setProductData(filteredProducts);
   };
 
+  const sortByPrice = (order) => {
+    let sortedData = [...productData]; // Create a copy of the current product data
+
+    if (order === "lowToHigh") {
+      sortedData.sort((a, b) => a.discountedPrice - b.discountedPrice);
+    } else if (order === "highToLow") {
+      sortedData.sort((a, b) => b.discountedPrice - a.discountedPrice);
+    }
+
+    setProductData(sortedData); // Update the displayed product data
+    setIsPriceOpen(false); // Close the dropdown after sorting
+  };
+
   return (
     <div>
       <div>
@@ -95,7 +113,7 @@ const ProductCards = () => {
               {/* Dropdown Button for Price Sorting */}
               <div className="relative lg:w-64 lg:ml-4">
                 <button
-                  className="lg:w-full md:w-full  sm:w-40 bg-white border border-gray-300 rounded-lg px-4 py-2 text-left flex justify-between items-center"
+                  className="lg:w-full md:w-full  sm:w-40 bg-white border border-gray-300 rounded-lg px-4 py-2 text-left flex justify-between items-center text-grayForPageHeading font-semibold"
                   onClick={togglePriceDropdown}
                 >
                   Sort by Price
@@ -119,11 +137,17 @@ const ProductCards = () => {
 
                 {/* Dropdown Menu for Price */}
                 {isPriceOpen && (
-                  <ul className="absolute z-10 mt-2 w-full bg-white-400 border border-gray-300 rounded-lg shadow-lg">
-                    <li className="px-4 py-2 hover:bg-green-100 cursor-pointer">
+                  <ul className="absolute z-10 mt-2 w-full bg-white-400 border border-gray-300 rounded-lg shadow-lg text-grayForPageHeading">
+                    <li
+                      className="px-4 py-2 hover:bg-green-100 cursor-pointer"
+                      onClick={() => sortByPrice("lowToHigh")}
+                    >
                       Low to High
                     </li>
-                    <li className="px-4 py-2 hover:bg-green-100 cursor-pointer">
+                    <li
+                      className="px-4 py-2 hover:bg-green-100 cursor-pointer"
+                      onClick={() => sortByPrice("highToLow")}
+                    >
                       High to Low
                     </li>
                   </ul>
@@ -133,7 +157,7 @@ const ProductCards = () => {
               {/* Dropdown Button For Category */}
               <div className="relative lg:w-64">
                 <button
-                  className="lg:w-full md:w-full sm:w-48 bg-white border border-gray-300 rounded-lg px-4 py-2 text-left flex justify-between items-center"
+                  className="lg:w-full md:w-full sm:w-48 bg-white border border-gray-300 rounded-lg px-4 py-2 text-left flex justify-between items-center text-grayForPageHeading font-semibold"
                   onClick={toggleDropdown}
                 >
                   Select Category
@@ -157,7 +181,7 @@ const ProductCards = () => {
 
                 {/* Dropdown Menu */}
                 {isOpen && (
-                  <ul className="absolute z-10 mt-2 w-full bg-white-400 border border-gray-300 rounded-lg shadow-lg">
+                  <ul className="absolute z-10 mt-2 w-full bg-white-400 border border-gray-300 rounded-lg shadow-lg text-grayForPageHeading">
                     {listItems.map((item) => (
                       <li
                         key={item.id}
@@ -180,12 +204,12 @@ const ProductCards = () => {
           productData.map((item) => (
             <div
               key={item.id}
-              className="border-2 border-gray-300 rounded-xl lg:w-[20%] py-5 m-[1%] p-4 flex flex-col items-center bg-grayForCards cursor-pointer relative"
+              className="border-2 border-gray-300 rounded-xl lg:w-[20%] py-5 m-[1%] p-4 flex flex-col items-center bg-grayForCards cursor-pointer relative transition-transform duration-300 transform hover:scale-105"
             >
               {/* 10% Off Badge */}
-              {/* <div className="absolute top-0 left-0 text-white text-xs font-normal text-white-400 bg-greenForBuyNow px-2 py-1 rounded-lg">
-                10% <br /> Off
-              </div> */}
+              <div className="absolute top-0 left-0 rounded-l-xl text-white text-xs font-normal text-white-400 bg-green-400 px-2 py-1">
+                {item.discount} % OFF
+              </div>
               <div
                 className="flex flex-col items-center"
                 onClick={() => navigate(`/products-details/${item.id}`)}
@@ -193,7 +217,7 @@ const ProductCards = () => {
                 <img
                   src={item.image}
                   alt=""
-                  className="lg:w-56 lg:h-36 md:w-56 md:h-36 sm:w-[130px] sm:h-[130px] rounded-lg object-contain mb-4 transition-transform duration-300 transform hover:scale-105"
+                  className="lg:w-56 lg:h-36 lg:mt-5 sm:mt-5 md:w-56 md:h-36 sm:w-[130px] sm:h-[130px] rounded-lg object-contain mb-4 transition-transform duration-300 transform hover:scale-105"
                 />
 
                 <p className="font-medium lg:text-[17px] md:text-[17px] sm:text-[15px] sm:font-normal text-grayForPageHeading ">
@@ -214,7 +238,13 @@ const ProductCards = () => {
                     <p>Out of Stock</p>
                   )}
                 </div>
-                <button className="text-greenForPlus text-xl bg-white-400 p-2 rounded-full shadow-xl shadow-gray-400">
+                <button
+                  className="text-greenForPlus text-xl bg-white-400 p-2 rounded-full shadow-xl shadow-gray-400"
+                  onClick={() => {
+                    addToCart(item);
+                    handleSuccess(`${item.name} added to Cart`);
+                  }}
+                >
                   <TiPlus />
                 </button>
               </div>

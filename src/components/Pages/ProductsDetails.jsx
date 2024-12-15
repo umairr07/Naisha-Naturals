@@ -1,7 +1,9 @@
 import { useNavigate, useParams } from "react-router-dom";
 import data from "../../data/data"; // Your data source
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
+import { CartContext } from "../../context/CartContext";
+import { handleSuccess } from "../../utils/Toast";
 
 const ProductsDetails = () => {
   const { id } = useParams();
@@ -17,6 +19,8 @@ const ProductsDetails = () => {
     const foundProduct = product.find((item) => item.id === id);
     setPrdId(foundProduct);
   }, [id]);
+
+  const { addToCart } = useContext(CartContext);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -82,7 +86,7 @@ const ProductsDetails = () => {
               <p className="ml-3">
                 ₹{prdid?.discountedPrice} / {prdid?.unit}
               </p>
-              <p className="ml-3 font-bold bg-greenForBuyNow text-white-400 p-1 rounded-md text-[10px]">
+              <p className="ml-3 font-semibold bg-greenForBuyNow text-white-400 px-2 py-1 rounded-md text-[10px]">
                 {prdid?.discount}% OFF
               </p>
             </div>
@@ -107,15 +111,22 @@ const ProductsDetails = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-8 text-grayForPageHeading">
+          <div className="flex items-center gap-5 text-grayForPageHeading">
             <p className="text-xl">Price / Quantity : </p>
             <div className="text-[18px] text-greenForBuyNow">
-              ₹ {prdid?.price * quantity}
+              ₹ {prdid?.discountedPrice * quantity}
             </div>
           </div>
 
           <div>
-            <button className="px-4 py-[4px] rounded-2xl bg-greenForBuyNow text-white-400">
+            <button
+              className="px-4 py-[4px] rounded-2xl bg-greenForBuyNow text-white-400"
+              onClick={() => {
+                addToCart(prdid);
+                navigate("/cart");
+                handleSuccess(`${prdid?.name} added to Cart`);
+              }}
+            >
               Buy Now
             </button>
           </div>
@@ -132,14 +143,14 @@ const ProductsDetails = () => {
         <div className="flex lg:gap-8 sm:gap-2 mt-5">
           {description ? (
             <button
-              className="lg:text-[15px] sm:text-[12px] lg:px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
+              className="lg:text-[17px] sm:text-[12px] lg:px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
               onClick={handleDescription}
             >
               Description
             </button>
           ) : (
             <button
-              className="lg:text-[15px] sm:text-[12px] lg:px-5 border border-gray-400 p-2 rounded-xl"
+              className="lg:text-[17px] sm:text-[12px] lg:px-5 border border-gray-400 p-2 rounded-xl"
               onClick={handleDescription}
             >
               Description
@@ -147,14 +158,14 @@ const ProductsDetails = () => {
           )}
           {disclaimer ? (
             <button
-              className="lg:text-[15px] sm:text-[12px]  px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
+              className="lg:text-[17px] sm:text-[12px]  px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
               onClick={handleDisclaimer}
             >
               Disclaimer
             </button>
           ) : (
             <button
-              className="lg:text-[15px] sm:text-[12px]  px-5 border border-gray-400 p-2 rounded-xl"
+              className="lg:text-[17px] sm:text-[12px]  px-5 border border-gray-400 p-2 rounded-xl"
               onClick={handleDisclaimer}
             >
               Disclaimer
@@ -162,14 +173,14 @@ const ProductsDetails = () => {
           )}
           {info ? (
             <button
-              className="lg:text-[15px] sm:text-[12px]  px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
+              className="lg:text-[17px] sm:text-[12px]  px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
               onClick={handleMoreInfo}
             >
               More Info
             </button>
           ) : (
             <button
-              className="lg:text-[15px] sm:text-[12px]  px-5 border border-gray-400 p-2 rounded-xl"
+              className="lg:text-[17px] sm:text-[12px]  px-5 border border-gray-400 p-2 rounded-xl"
               onClick={handleMoreInfo}
             >
               More Info
@@ -181,43 +192,43 @@ const ProductsDetails = () => {
         {description && (
           <div className="mt-5 flex flex-col gap-5">
             <div>
-              <p className="text-greenForPlus lg:text-[17px]">Overview</p>
-              <p className="lg:text-[15px] sm:text-[13px]">
+              <p className="text-greenForPlus lg:text-[20px]">Overview</p>
+              <p className="lg:text-[17px] sm:text-[13px]">
                 {prdid?.description}
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[17px]">Nutrients</p>
-              <p className="lg:text-[15px] sm:text-[13px] ml-5">
+              <p className="text-greenForPlus lg:text-[20px]">Nutrients</p>
+              <p className="lg:text-[17px] sm:text-[13px] ml-5">
                 1) Protein : {prdid?.nutrients?.protein}
               </p>
-              <p className="lg:text-[15px] sm:text-[13px] ml-5">
+              <p className="lg:text-[17px] sm:text-[13px] ml-5">
                 2) Carbohydrates : {prdid?.nutrients?.carbohydrates}
               </p>
-              <p className="lg:text-[15px] sm:text-[13px] ml-5">
+              <p className="lg:text-[17px] sm:text-[13px] ml-5">
                 3) Fats : {prdid?.nutrients?.fats}
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[17px]">
+              <p className="text-greenForPlus lg:text-[20px]">
                 Mfg Date :{" "}
-                <span className="lg:text-[15px] sm:text-[13px] text-grayForPageHeading">
+                <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
                   {prdid?.manufactureDate}
                 </span>
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[17px]">
+              <p className="text-greenForPlus lg:text-[20px]">
                 Life Span :{" "}
-                <span className="lg:text-[15px] sm:text-[13px] text-grayForPageHeading">
+                <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
                   {prdid?.lifespan}
                 </span>
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[17px]">
+              <p className="text-greenForPlus lg:text-[20px]">
                 Storage Instructions :{" "}
-                <span className="lg:text-[15px] sm:text-[13px] text-grayForPageHeading">
+                <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
                   {prdid?.additionalInfo}
                 </span>
               </p>
@@ -227,7 +238,7 @@ const ProductsDetails = () => {
 
         {/* Disclaimer Section */}
         {disclaimer && (
-          <div className="mt-5 text-grayForPageHeading lg:text-[15px] sm:text-[13px] w-[86%]">
+          <div className="mt-5 text-grayForPageHeading lg:text-[17px] sm:text-[13px] w-[86%]">
             While we work to ensure that the product information is correct,
             actual product packaging and material may contain more or different
             information from what is given here. Please read the product labels,
@@ -239,8 +250,8 @@ const ProductsDetails = () => {
         {/* More Info */}
         {info && (
           <div className="mt-5 flex items-center gap-5">
-            <h1 className="text-greenForPlus lg:text-[17px]">Reviews : </h1>
-            <span className="lg:text-[15px] sm:text-[13px]">
+            <h1 className="text-greenForPlus lg:text-[20px]">Reviews : </h1>
+            <span className="lg:text-[17px] sm:text-[13px]">
               {prdid?.reviews}⭐
             </span>
           </div>

@@ -14,8 +14,8 @@ const lists = [
     path: "/contact",
   },
   {
-    name: "Cart",
-    path: "/cart",
+    name: "About Us",
+    path: "/aboutus",
   },
 ];
 

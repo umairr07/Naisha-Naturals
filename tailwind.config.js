@@ -54,6 +54,7 @@ export default {
         600: "#2563EB"
       },
       red: {
+        200: "#FECACA",
         500: "#EF4444",
         600: "#DC2626"
       },

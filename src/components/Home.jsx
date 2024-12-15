@@ -1,24 +1,26 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import image1 from "../images/mn-dairy1.jpg";
-import image2 from "../images/cowmilkproducts1.png";
-import image3 from "../images/home-image.jpg";
+import image1 from "../images/Product Images/naishanaturals.jpg";
+import image2 from "../images/Product Images/dairyproducts.jpg";
+import image3 from "../images/Product Images/farmingproducts.jpg";
+import image4 from "../images/Product Images/vegetables.jpg";
+import image5 from "../images/Product Images/grains.jpg";
 
 const images = [
   {
     link: image1,
   },
   {
-    link: image1,
+    link: image2,
   },
   {
-    link: image1,
+    link: image3,
   },
   {
-    link: image1,
+    link: image4,
   },
   {
-    link: image1,
+    link: image5,
   },
 ];
 
@@ -58,10 +60,11 @@ const Home = () => {
             <img
               src={img.link}
               alt={`Carousel image ${idx + 1}`}
-              className="w-full h-auto object-cover"
+              className="h-auto object-cover rounded-xl mt-5"
               style={{
+                maxWidth: "100%",
                 maxHeight: "80vh", // Maintain a max height for larger screens
-                objectFit: "cover", // Ensures images cover the space properly
+                objectFit: "contain", // Ensures images cover the space properly
               }}
             />
           </div>
