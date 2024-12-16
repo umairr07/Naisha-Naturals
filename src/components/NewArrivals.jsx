@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import data from "../data/data";
+import { data, newArrivals } from "../data/data";
 import { useNavigate } from "react-router-dom";
 import { TiPlus } from "react-icons/ti";
 import { CartContext } from "../context/CartContext";
 import { handleSuccess } from "../utils/Toast";
 
 const NewArrivals = () => {
-  const [newArrival, setNewArrival] = useState(data);
+  const [newArrival, setNewArrival] = useState(newArrivals);
   const navigate = useNavigate();
   const { addToCart } = useContext(CartContext);
 

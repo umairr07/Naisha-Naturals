@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import data from "../../data/data";
+import { data } from "../../data/data";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { TiPlus } from "react-icons/ti";

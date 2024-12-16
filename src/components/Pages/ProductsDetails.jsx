@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import data from "../../data/data"; // Your data source
+import { data, newArrivals } from "../../data/data"; // Your data source
 import { useContext, useEffect, useState } from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { CartContext } from "../../context/CartContext";
@@ -7,7 +7,6 @@ import { handleSuccess } from "../../utils/Toast";
 
 const ProductsDetails = () => {
   const { id } = useParams();
-  const [product, setProduct] = useState(data);
   const [prdid, setPrdId] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [description, setDescription] = useState(true);
@@ -16,15 +15,13 @@ const ProductsDetails = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const foundProduct = product.find((item) => item.id === id);
+    // Combine data sources and find the product by ID
+    const combinedProducts = [...data, ...newArrivals];
+    const foundProduct = combinedProducts.find((item) => item.id === id);
     setPrdId(foundProduct);
   }, [id]);
 
   const { addToCart } = useContext(CartContext);
-
-  if (!product) {
-    return <div>Loading...</div>;
-  }
 
   const increaseQuantity = () => {
     const count = quantity + 1;

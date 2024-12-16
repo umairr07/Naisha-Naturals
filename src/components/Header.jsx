@@ -6,7 +6,7 @@ import { UserContext } from "../context/UserContext";
 import johnImage from "../images/johndoe.jpg";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { handleSuccess } from "../utils/Toast";
-import logo from "../images/logon.jpg";
+import logo from "../images/logon-removebg-preview.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +41,7 @@ const Header = () => {
             >
               Naisha Naturals
             </Link>
-            {/* <img src={logo} alt="" className="w-20 h-10 " /> */}
+            {/* <img src={logo} alt="" className="w-24 h-10" /> */}
           </div>
 
           <div className="sm:hidden lg:flex md:flex">

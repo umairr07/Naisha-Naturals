@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import data from "../data/data";
+import { data } from "../data/data";
 import { TiPlus } from "react-icons/ti";
 import { CartContext } from "../context/CartContext";
 import { handleSuccess } from "../utils/Toast";

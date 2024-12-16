@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import data from "../data/data.js";
 import { useLocation, useNavigate } from "react-router-dom";
 import { TiPlus } from "react-icons/ti";
 import Cart from "./Pages/Cart.jsx";
 import { CartContext } from "../context/CartContext.jsx";
 import { handleSuccess } from "../utils/Toast.jsx";
+import { data } from "../data/data.js";
 
 const listItems = [
   {
