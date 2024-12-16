@@ -83,7 +83,7 @@ const ProductsDetails = () => {
               <p className="ml-3">
                 ₹{prdid?.discountedPrice} / {prdid?.unit}
               </p>
-              <p className="ml-3 font-semibold bg-greenForBuyNow text-white-400 px-2 py-1 rounded-md text-[10px]">
+              <p className="ml-3 font-semibold bg-green-400 text-white-400 px-2 py-1 rounded-md text-[10px]">
                 {prdid?.discount}% OFF
               </p>
             </div>
@@ -110,14 +110,14 @@ const ProductsDetails = () => {
 
           <div className="flex items-center gap-5 text-grayForPageHeading">
             <p className="text-xl">Price / Quantity : </p>
-            <div className="text-[18px] text-greenForBuyNow">
+            <div className="text-[18px] text-green-400 font-bold">
               ₹ {prdid?.discountedPrice * quantity}
             </div>
           </div>
 
           <div>
             <button
-              className="px-4 py-[4px] rounded-2xl bg-greenForBuyNow text-white-400"
+              className="px-4 py-[4px] rounded-2xl bg-green-400  text-white-400"
               onClick={() => {
                 addToCart(prdid);
                 navigate("/cart");
@@ -189,13 +189,13 @@ const ProductsDetails = () => {
         {description && (
           <div className="mt-5 flex flex-col gap-5">
             <div>
-              <p className="text-greenForPlus lg:text-[20px]">Overview</p>
+              <p className="text-green-400  lg:text-[20px]">Overview</p>
               <p className="lg:text-[17px] sm:text-[13px]">
                 {prdid?.description}
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[20px]">Nutrients</p>
+              <p className="text-green-400  lg:text-[20px]">Nutrients</p>
               <p className="lg:text-[17px] sm:text-[13px] ml-5">
                 1) Protein : {prdid?.nutrients?.protein}
               </p>
@@ -207,7 +207,7 @@ const ProductsDetails = () => {
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[20px]">
+              <p className="text-green-400  lg:text-[20px]">
                 Mfg Date :{" "}
                 <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
                   {prdid?.manufactureDate}
@@ -215,7 +215,7 @@ const ProductsDetails = () => {
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[20px]">
+              <p className="text-green-400  lg:text-[20px]">
                 Life Span :{" "}
                 <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
                   {prdid?.lifespan}
@@ -223,7 +223,7 @@ const ProductsDetails = () => {
               </p>
             </div>
             <div>
-              <p className="text-greenForPlus lg:text-[20px]">
+              <p className="text-green-400  lg:text-[20px]">
                 Storage Instructions :{" "}
                 <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
                   {prdid?.additionalInfo}
@@ -247,7 +247,7 @@ const ProductsDetails = () => {
         {/* More Info */}
         {info && (
           <div className="mt-5 flex items-center gap-5">
-            <h1 className="text-greenForPlus lg:text-[20px]">Reviews : </h1>
+            <h1 className="text-green-400  lg:text-[20px]">Reviews : </h1>
             <span className="lg:text-[17px] sm:text-[13px]">
               {prdid?.reviews}⭐
             </span>
