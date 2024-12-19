@@ -93,9 +93,9 @@ const ProductCards = () => {
     <div>
       <div>
         {route.pathname === "/" ? (
-          <center className="lg:text-3xl md:text-2xl sm:text-xl lg:font-bold md:font-bold sm:font-medium mt-20 py-5 mb-5 text-grayForPageHeading">
-            Kuch Healthy Ho Jaye...
-          </center>
+          <h1 className="lg:text-3xl md:text-2xl sm:text-xl lg:font-bold md:font-bold sm:font-medium mt-20 py-5 mb-5 text-grayForPageHeading lg:px-16 sm:px-5">
+            | Products
+          </h1>
         ) : (
           <div className="lg:flex lg:flex-row lg:justify-between sm:flex sm:flex-col sm:justify-center sm:items-center lg:mt-24 sm:mt-28 mb-8 py-5 lg:px-[100px]">
             {/* Search Bar */}
@@ -199,59 +199,101 @@ const ProductCards = () => {
         )}
       </div>
 
-      <div className="lg:flex lg:flex-wrap lg:justify-center sm:grid sm:grid-cols-2 sm:gap-5 sm:px-5">
+      <div
+        className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:px-16
+      sm:px-5 "
+      >
         {productData.length > 0 ? (
           productData.map((item) => (
             <div
               key={item.id}
-              className="border-2 border-gray-300 rounded-xl lg:w-[20%] py-5 m-[1%] p-4 flex flex-col items-center bg-grayForCards cursor-pointer relative transition-transform duration-300 transform hover:scale-105"
+              className="relative bg-white-400 border border-gray-400 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
             >
-              {/* 10% Off Badge */}
-              <div className="absolute top-0 left-0 rounded-l-xl text-white text-xs font-normal text-white-400 bg-green-400 px-2 py-1">
-                {item.discount} % OFF
-              </div>
-              <div
-                className="flex flex-col items-center"
-                onClick={() => navigate(`/products-details/${item.id}`)}
-              >
-                <img
-                  src={item.image}
-                  alt=""
-                  className="lg:w-56 lg:h-36 lg:mt-5 sm:mt-5 md:w-56 md:h-36 sm:w-[130px] sm:h-[130px] rounded-lg object-contain mb-4 transition-transform duration-300 transform hover:scale-105"
-                />
+              <div className="flex flex-col justify-between gap-5">
+                {/* Discount Badge */}
 
-                <p className="font-medium lg:text-[17px] md:text-[17px] sm:text-[15px] sm:font-normal text-grayForPageHeading ">
-                  {item.name}
-                </p>
-                <p className="text-grayForPageHeading lg:text-[14px] md:text-[14px] sm:text-[12px] ">
-                  <span className="line-through">₹{item.price}</span>
-                  <span className="ml-3">
-                    ₹{item.discountedPrice} / {item.unit}
-                  </span>
-                </p>
-              </div>
-              <div className="flex flex-row justify-between items-center mt-5 w-full">
-                <div>
-                  {item.instock === true ? (
-                    <p className="text-green-400 text-xl">In Stock</p>
-                  ) : (
-                    <p>Out of Stock</p>
-                  )}
-                </div>
-                <button
-                  className="text-greenForPlus text-xl bg-white-400 p-2 rounded-full shadow-xl shadow-gray-400"
-                  onClick={() => {
-                    addToCart(item);
-                    handleSuccess(`${item.name} added to Cart`);
-                  }}
+                {item.discount > 0 ? (
+                  <div className="absolute top- left-0 bg-green-400 text-white-400 text-xs font-bold px-3 py-1 rounded-br-xl z-10">
+                    {item.discount}% OFF
+                  </div>
+                ) : (
+                  <div className="absolute top- left-0 bg-red-500 text-white-400 text-xs font-bold px-3 py-1 rounded-br-xl z-10">
+                    NO OFF
+                  </div>
+                )}
+
+                {/* Product Image */}
+                <div
+                  className="cursor-pointer relative group"
+                  onClick={() => navigate(`/products-details/${item.id}`)}
                 >
-                  <TiPlus />
-                </button>
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-44 m-auto mt-5 h-36 object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black bg-opacity-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+
+                {/* Product Details */}
+                <div className="p-5">
+                  <h3 className="text-xl font-semibold text-gray-800 truncate">
+                    {item.name}
+                  </h3>
+                  <div className="mt-2 flex items-center justify-between">
+                    <div>
+                      <p className="text-sm text-gray-600">
+                        <span className="line-through text-red-500">
+                          ₹{item.price}
+                        </span>
+                        <span className="ml-2 text-gray-800 font-medium">
+                          ₹{item.discountedPrice} / {item.unit}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                  {/* Star Rating */}
+                  <div className="flex items-center mt-2">
+                    {Array.from({ length: 5 }, (_, index) => (
+                      <svg
+                        key={index}
+                        xmlns="http://www.w3.org/2000/svg"
+                        className={`h-5 w-5 ${
+                          index < item.reviews
+                            ? "text-yellow-400"
+                            : "text-gray-300"
+                        }`}
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M12 .587l3.668 7.572L24 9.748l-6 5.849 1.416 8.268L12 18.896l-7.416 4.969L6 15.597 0 9.748l8.332-1.589z" />
+                      </svg>
+                    ))}
+                    <span className="ml-2 text-gray-600 text-sm">
+                      ({item.reviews})
+                    </span>
+                  </div>
+                </div>
+
+                {/* Add to Cart Button */}
+                <div className="p-5 pt-0">
+                  <button
+                    className="w-full bg-green-400 text-white-400 py-2 rounded-md text-sm font-medium hover:bg-green-600 transition-colors"
+                    onClick={() => {
+                      addToCart(item);
+                      handleSuccess(`${item.name} added to Cart`);
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           ))
         ) : (
-          <p className="text-red-500">No products found :( </p>
+          <p className="text-center text-red-500 text-lg">
+            No products found :(
+          </p>
         )}
       </div>
     </div>

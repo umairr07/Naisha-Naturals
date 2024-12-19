@@ -40,7 +40,7 @@ export const data = [
         tags: ["traditional", "homemade", "pure"],
         discount: 15, // 15% discount
         discountedPrice: 510, // Price after discount
-        reviews: 4.7,
+        reviews: 4,
     },
     {
         id: "3",
@@ -205,7 +205,7 @@ export const data = [
         lifespan: "1 year",
         additionalInfo: "Store in a cool, dry place away from sunlight.",
         tags: ["organic", "healthy", "spice"],
-        discount: "10%",
+        discount: "10",
         discountedPrice: 162,
         reviews: 4.5
     },
@@ -226,7 +226,7 @@ export const data = [
         lifespan: "6 months",
         additionalInfo: "Refrigerate after opening.",
         tags: ["fresh", "dairy", "butter"],
-        discount: "5%",
+        discount: "5",
         discountedPrice: 190,
         reviews: 4.7
     },
@@ -247,7 +247,7 @@ export const data = [
         lifespan: "1 year",
         additionalInfo: "Store in a cool, dry place to maintain freshness.",
         tags: ["organic", "grain", "premium"],
-        discount: "15%",
+        discount: "15",
         discountedPrice: 510,
         reviews: 4.3
     },
@@ -268,7 +268,7 @@ export const data = [
         lifespan: "1 year",
         additionalInfo: "Store in an airtight container.",
         tags: ["organic", "sweetener", "natural"],
-        discount: "20%",
+        discount: "20",
         discountedPrice: 96,
         reviews: 4.6
     },
@@ -289,7 +289,7 @@ export const data = [
         lifespan: "1 month",
         additionalInfo: "Store in a cool place and use within a week for best flavor.",
         tags: ["fresh", "spicy", "vegetable"],
-        discount: "10%",
+        discount: "10",
         discountedPrice: 36,
         reviews: 4.8
     },
@@ -310,7 +310,7 @@ export const data = [
         lifespan: "6 months",
         additionalInfo: "Store in a cool, dry place.",
         tags: ["premium", "dry fruit", "snack"],
-        discount: "5%",
+        discount: "5",
         discountedPrice: 760,
         reviews: 4.4
     },
@@ -331,7 +331,7 @@ export const data = [
         lifespan: "1 year",
         additionalInfo: "Store in a cool, dry place away from sunlight.",
         tags: ["organic", "oil", "cold-pressed"],
-        discount: "10%",
+        discount: "10",
         discountedPrice: 270,
         reviews: 4.2
     },
@@ -352,7 +352,7 @@ export const data = [
         lifespan: "1 month",
         additionalInfo: "Store in a cool, dry place.",
         tags: ["organic", "vegetable", "fresh"],
-        discount: "5%",
+        discount: "5",
         discountedPrice: 28.5,
         reviews: 4.5
     },
@@ -373,7 +373,7 @@ export const data = [
         lifespan: "6 months",
         additionalInfo: "Store in an airtight container to maintain freshness.",
         tags: ["multigrain", "healthy", "flour"],
-        discount: "10%",
+        discount: "10",
         discountedPrice: 180,
         reviews: 4.7
     }

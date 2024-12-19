@@ -4,18 +4,15 @@ import { useContext, useEffect, useState } from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { CartContext } from "../../context/CartContext";
 import { handleSuccess } from "../../utils/Toast";
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
 const ProductsDetails = () => {
   const { id } = useParams();
   const [prdid, setPrdId] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const [description, setDescription] = useState(true);
-  const [disclaimer, setDisclaimer] = useState(false);
-  const [info, setInfo] = useState(false);
   const navigate = useNavigate();
+  const [info, setInfo] = useState(false);
 
   useEffect(() => {
-    // Combine data sources and find the product by ID
     const combinedProducts = [...data, ...newArrivals];
     const foundProduct = combinedProducts.find((item) => item.id === id);
     setPrdId(foundProduct);
@@ -23,236 +20,116 @@ const ProductsDetails = () => {
 
   const { addToCart } = useContext(CartContext);
 
-  const increaseQuantity = () => {
-    const count = quantity + 1;
-    setQuantity(count);
-  };
-
-  const decreaseQuantity = () => {
-    const count = quantity - 1;
-    setQuantity(count);
-  };
-
-  const handleDescription = () => {
-    setDescription(true);
-    setDisclaimer(false);
-    setInfo(false);
-  };
-
-  const handleDisclaimer = () => {
-    setDescription(false);
-    setDisclaimer(true);
-    setInfo(false);
-  };
-
   const handleMoreInfo = () => {
-    setDescription(false);
-    setDisclaimer(false);
-    setInfo(true);
+    setInfo(!info);
   };
 
   return (
-    <div>
-      {/* arrow for redirecting to home page */}
-      <div className="flex items-center gap-3 lg:ml-64 sm:ml-5 mt-10 py-10 text-grayForPageHeading">
-        <FaArrowCircleLeft
-          className="text-2xl cursor-pointer"
+    <div className="flex flex-col items-center py-10 px-4">
+      {/* Back Button */}
+      <div className="w-full max-w-4xl mb-6">
+        <button
+          className="flex items-center gap-2 text-gray-600 text-xl"
           onClick={() => navigate("/")}
-        />
-        <p className="text-[18px]">Product / {prdid?.name}</p>
+        >
+          <FaArrowCircleLeft className="text-xl" />
+          Back to All Products
+        </button>
       </div>
 
-      {/* product image and right div */}
-      <div className="lg:flex lg:flex-row lg:justify-center lg:items-start lg:gap-10 lg:mt-5 lg:w-[100%] sm:flex sm:flex-col sm:justify-center sm:items-center sm:px-10 lg:m-auto">
-        <div className="flex flex-col justify-center items-center sm:mb-10 w-[40%]">
+      {/* Product Details */}
+      <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10 max-w-4xl w-full bg-white-400 rounded-lg border border-gray-400 overflow-hidden">
+        {/* Image Section */}
+        <div className="p-6">
           <img
             src={prdid?.image}
             alt={prdid?.name}
-            className="lg:w-[400px] lg:h-[300px] rounded-lg object-cover lg:mb-4 sm:mb-3 border-[1px] border-gray-400"
+            className="w-full h-auto rounded-lg object-cover border border-gray-300"
           />
         </div>
 
-        <div className="flex flex-col gap-10 lg:w-[40%]">
-          <div>
-            <h1 className="lg:text-3xl sm:text-2xl text-grayForPageHeading">
-              {prdid?.name}
-            </h1>
-            {/* <p>{prdid?.description}</p> */}
-            <div className="text-grayForPageHeading flex items-center">
-              <p className="line-through">₹{prdid?.price}</p>
-              <p className="ml-3">
-                ₹{prdid?.discountedPrice} / {prdid?.unit}
-              </p>
-              <p className="ml-3 font-semibold bg-green-400 text-white-400 px-2 py-1 rounded-md text-[10px]">
-                {prdid?.discount}% OFF
-              </p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-8 text-grayForPageHeading">
-            <p className="text-xl">Quantity : </p>
-            <div className="flex gap-8 border border-gray-400 py-2 px-2 rounded-lg">
-              <button
-                onClick={decreaseQuantity}
-                className="text-greenForPlus text-xl bg-gray-50 px-2 rounded-full shadow-md"
-              >
-                -
-              </button>
-              <button>{quantity}</button>
-              <button
-                onClick={increaseQuantity}
-                className="text-greenForPlus text-xl bg-gray-50 px-2 rounded-full shadow-md"
-              >
-                +
-              </button>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-5 text-grayForPageHeading">
-            <p className="text-xl">Price / Quantity : </p>
-            <div className="text-[18px] text-green-400 font-bold">
-              ₹ {prdid?.discountedPrice * quantity}
-            </div>
-          </div>
-
-          <div>
+        {/* Details Section */}
+        <div className="flex-1 space-y-7 p-6">
+          {/* Product Name */}
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+            {prdid?.name}
+          </h1>
+          {/* Price */}
+          <p className="text-lg text-gray-600 mb-4">
+            <span className="line-through text-red-500">₹{prdid?.price}</span>
+            <span className="ml-2 text-2xl text-gray-800 font-semibold">
+              ₹{prdid?.discountedPrice}
+            </span>
+          </p>
+          {/* Description */}
+          <p className="text-gray-700 mb-6">{prdid?.description}</p>
+          {/* Buttons */}
+          <div className="flex items-center gap-4">
             <button
-              className="px-4 py-[4px] rounded-2xl bg-green-400  text-white-400"
               onClick={() => {
                 addToCart(prdid);
-                navigate("/cart");
                 handleSuccess(`${prdid?.name} added to Cart`);
               }}
+              className="bg-green-400 text-white-400 py-2 px-4 rounded-md hover:bg-green-600"
             >
-              Buy Now
+              Add to Cart
             </button>
+          </div>
+
+          {/* More Info */}
+          <div className="border-t border-gray-400 text-grayForPageHeading  py-3">
+            <div className="flex items-center gap-2">
+              <h1 className="text-2xl font-medium mb-5">More Info </h1>
+              {info ? (
+                <TiArrowSortedUp
+                  className="mb-5 text-2xl cursor-pointer"
+                  onClick={handleMoreInfo}
+                />
+              ) : (
+                <TiArrowSortedDown
+                  className="mb-5 text-2xl cursor-pointer"
+                  onClick={handleMoreInfo}
+                />
+              )}
+            </div>
+            {info && (
+              <div className="space-y-5">
+                <div>
+                  <p className="text-green-400 text-[18px]">Nutrients</p>
+                  <p className=" ml-5">
+                    1) Protein : {prdid?.nutrients?.protein}
+                  </p>
+                  <p className="ml-5">
+                    2) Carbohydrates : {prdid?.nutrients?.carbohydrates}
+                  </p>
+                  <p className="ml-5">3) Fats : {prdid?.nutrients?.fats}</p>
+                </div>
+                <div className="space-y-5">
+                  <p>
+                    <span className="text-green-400 text-[18px]">
+                      Mfg Date :
+                    </span>{" "}
+                    <span>{prdid?.manufactureDate}</span>
+                  </p>
+                  <p>
+                    <span className="text-green-400 text-[18px]">
+                      Life Span :
+                    </span>{" "}
+                    <span>{prdid?.lifespan}</span>
+                  </p>
+                </div>
+                <div>
+                  <p className="text-green-400 text-[18px]">
+                    Storage Instructions :{" "}
+                    <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
+                      {prdid?.additionalInfo}
+                    </span>
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-      </div>
-
-      {/* More Details of Product  */}
-      <div className="lg:ml-[15%] sm:ml-5 sm:mt-10 text-grayForPageHeading h-[70vh]">
-        <div className="text-grayForPageHeading lg:text-2xl sm:text-[18px] lg:font-semibold">
-          <h1>More Details of Product / {prdid?.name}</h1>
-        </div>
-
-        {/* buttons  */}
-        <div className="flex lg:gap-8 sm:gap-2 mt-5">
-          {description ? (
-            <button
-              className="lg:text-[17px] sm:text-[12px] lg:px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
-              onClick={handleDescription}
-            >
-              Description
-            </button>
-          ) : (
-            <button
-              className="lg:text-[17px] sm:text-[12px] lg:px-5 border border-gray-400 p-2 rounded-xl"
-              onClick={handleDescription}
-            >
-              Description
-            </button>
-          )}
-          {disclaimer ? (
-            <button
-              className="lg:text-[17px] sm:text-[12px]  px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
-              onClick={handleDisclaimer}
-            >
-              Disclaimer
-            </button>
-          ) : (
-            <button
-              className="lg:text-[17px] sm:text-[12px]  px-5 border border-gray-400 p-2 rounded-xl"
-              onClick={handleDisclaimer}
-            >
-              Disclaimer
-            </button>
-          )}
-          {info ? (
-            <button
-              className="lg:text-[17px] sm:text-[12px]  px-5 bg-green-400 border text-white-400 p-2 rounded-xl"
-              onClick={handleMoreInfo}
-            >
-              More Info
-            </button>
-          ) : (
-            <button
-              className="lg:text-[17px] sm:text-[12px]  px-5 border border-gray-400 p-2 rounded-xl"
-              onClick={handleMoreInfo}
-            >
-              More Info
-            </button>
-          )}
-        </div>
-
-        {/* Descritpion Section */}
-        {description && (
-          <div className="mt-5 flex flex-col gap-5">
-            <div>
-              <p className="text-green-400  lg:text-[20px]">Overview</p>
-              <p className="lg:text-[17px] sm:text-[13px]">
-                {prdid?.description}
-              </p>
-            </div>
-            <div>
-              <p className="text-green-400  lg:text-[20px]">Nutrients</p>
-              <p className="lg:text-[17px] sm:text-[13px] ml-5">
-                1) Protein : {prdid?.nutrients?.protein}
-              </p>
-              <p className="lg:text-[17px] sm:text-[13px] ml-5">
-                2) Carbohydrates : {prdid?.nutrients?.carbohydrates}
-              </p>
-              <p className="lg:text-[17px] sm:text-[13px] ml-5">
-                3) Fats : {prdid?.nutrients?.fats}
-              </p>
-            </div>
-            <div>
-              <p className="text-green-400  lg:text-[20px]">
-                Mfg Date :{" "}
-                <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
-                  {prdid?.manufactureDate}
-                </span>
-              </p>
-            </div>
-            <div>
-              <p className="text-green-400  lg:text-[20px]">
-                Life Span :{" "}
-                <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
-                  {prdid?.lifespan}
-                </span>
-              </p>
-            </div>
-            <div>
-              <p className="text-green-400  lg:text-[20px]">
-                Storage Instructions :{" "}
-                <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
-                  {prdid?.additionalInfo}
-                </span>
-              </p>
-            </div>
-          </div>
-        )}
-
-        {/* Disclaimer Section */}
-        {disclaimer && (
-          <div className="mt-5 text-grayForPageHeading lg:text-[17px] sm:text-[13px] w-[86%]">
-            While we work to ensure that the product information is correct,
-            actual product packaging and material may contain more or different
-            information from what is given here. Please read the product labels,
-            description, directions, warning and other information that comes
-            with the actual product before use.
-          </div>
-        )}
-
-        {/* More Info */}
-        {info && (
-          <div className="mt-5 flex items-center gap-5">
-            <h1 className="text-green-400  lg:text-[20px]">Reviews : </h1>
-            <span className="lg:text-[17px] sm:text-[13px]">
-              {prdid?.reviews}⭐
-            </span>
-          </div>
-        )}
       </div>
     </div>
   );

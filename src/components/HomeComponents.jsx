@@ -9,7 +9,7 @@ const HomeComponents = () => {
   return (
     <div>
       <Home />
-      <Products />
+      {/* <Products /> */}
       <ProductCards />
       <BestSeller />
       <NewArrivals />

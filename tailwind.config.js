@@ -61,6 +61,9 @@ export default {
       lightGray: {
         400: "#E5E7EB"
       },
+      yellow: {
+        400: "#FACC15"
+      },
       green: {
         50: "#F0FDF4",
         100: "#DCFCE7",

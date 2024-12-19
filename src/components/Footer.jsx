@@ -3,10 +3,14 @@ import { BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa6";
 import { LiaLinkedin } from "react-icons/lia";
 import { Link } from "react-router-dom";
+import logo from "../images/logon-removebg-preview.png";
 
 const Footer = () => {
   return (
     <footer className=" bg-grayForFooter text-white py-10 mt-8">
+      {/* <div>
+        <img src={logo} alt="" className="w-20 ml-16" />
+      </div> */}
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 sm:gap-3 gap-6">
         {/* Products Section */}
         <div className="lg:px-20 sm:px-5">

@@ -60,12 +60,7 @@ const Home = () => {
             <img
               src={img.link}
               alt={`Carousel image ${idx + 1}`}
-              className="h-auto object-cover rounded-xl mt-5"
-              style={{
-                maxWidth: "100%",
-                maxHeight: "80vh", // Maintain a max height for larger screens
-                objectFit: "contain", // Ensures images cover the space properly
-              }}
+              className="w-fit h-fit"
             />
           </div>
         ))}
