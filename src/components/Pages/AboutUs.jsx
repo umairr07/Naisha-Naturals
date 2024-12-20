@@ -2,58 +2,173 @@ import React from "react";
 
 const AboutUs = () => {
   return (
-    <div className="min-h-screen text-grayForPageHeading">
-      {/* Hero Section */}
-      <div className="text-grayForPageHeading py-16">
-        <div className="container mx-auto text-center">
-          <h1 className="lg:text-4xl sm:text-3xl font-bold mb-4">
-            About <span className="text-green-400 italic">Naisha Naturals</span>
-          </h1>
-          <p className="lg:text-lg sm:text-[14px] font-medium">
-            Your trusted source for daily essentials and sustainable products.
-          </p>
+    <div className="min-h-screen">
+      {/* Header Section */}
+      <img
+        src="https://media.istockphoto.com/id/1286378180/vector/website-information-concept.jpg?s=612x612&w=0&k=20&c=6v9Hcbp0zp5itIPIywobPQF13YsHIQ4j_srF5VbQusY="
+        alt=""
+        className="m-auto"
+      />
+
+      {/* About Us Section */}
+      <div className="max-w-6xl mx-auto py-12 px-6 text-grayForPageHeading">
+        <h2 className="text-4xl font-bold text-center mb-8">Who We Are?</h2>
+        <p className="text-lg leading-relaxed text-center mb-12">
+          Welcome to{" "}
+          <span className="font-semibold text-green-600">Naisha Naturals</span>{" "}
+          – your trusted destination for premium daily essentials and farming
+          products. From fresh milk, pure ghee, and soft paneer to sustainable
+          farming solutions, we are committed to delivering quality products
+          that cater to your everyday needs. Our mission is to bridge the gap
+          between nature and households by providing authentic, natural, and
+          sustainable essentials.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Column 1 */}
+          <div className="space-y-6">
+            <div className="flex gap-4 p-5 rounded-xl items-center bg-green-400 text-white-400">
+              <div className="bg-white-400 text-green-400 p-2 flex items-center justify-center rounded-full shadow-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6v6l4 2"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold ">Fresh & Pure</h3>
+                <p className="">
+                  We provide high-quality, fresh, and natural products to meet
+                  your daily needs.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4 rounded-xl items-center bg-green-400 text-white-400 p-5">
+              <div className="bg-white-400 text-green-400 p-2 flex items-center justify-center rounded-full shadow-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold">Sustainability</h3>
+                <p className="">
+                  Our farming solutions ensure eco-friendly and sustainable
+                  practices for a better future.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 2 */}
+          <div className="space-y-6">
+            <div className="flex gap-4 rounded-xl items-center bg-green-400 text-white-400 p-5">
+              <div className="bg-white-400 text-green-400 p-2  flex items-center justify-center rounded-full shadow-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M3 10h18M3 14h18"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold ">Wide Range</h3>
+                <p className="">
+                  From daily essentials to farming products, we have everything
+                  you need in one place.
+                </p>
+              </div>
+            </div>
+
+            <div className="flex gap-4 rounded-xl items-center bg-green-400 text-white-400 p-5">
+              <div className="bg-white-400 text-green-400 p-2 flex items-center justify-center rounded-full shadow-md">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-8 h-8"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6v6l4 2"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-semibold ">Customer First</h3>
+                <p className="">
+                  We prioritize your satisfaction by delivering the best quality
+                  and service.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Content Section */}
-      <div className="container mx-auto lg:py-5 px-4 space-y-12 flex flex-col justify-center items-center">
-        {/* Who We Are */}
-        <div className="border lg:w-[60%] bg-gray-100 rounded-lg px-5 py-10">
-          <h2 className="lg:text-3xl sm:text-2xl font-bold mb-4 text-center">
-            Who We Are?
-          </h2>
-          <p className="text-gray-700 text-center max-w-2xl mx-auto">
-            At Naisha Naturals, we are dedicated to providing fresh, natural,
-            and high-quality daily essentials like milk, ghee, paneer, and
-            farming products. We believe in promoting a healthier lifestyle
-            through sustainable and eco-friendly practices, ensuring that our
-            products are not only good for you but also for the planet.
-          </p>
-        </div>
+      {/* Testimonials Section */}
+      <div className="py-12">
+        <div className="max-w-6xl mx-auto text-center text-grayForPageHeading">
+          <h2 className="text-4xl font-bold  mb-6">What Our Customers Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-white-400 p-6 flex flex-col justify-between shadow-lg rounded-lg">
+              <p className=" italic text-green-400">
+                “Naisha Naturals has transformed the way I shop for daily
+                essentials. The quality of their products is unbeatable!”
+              </p>
+              <div className="mt-4  font-semibold">- Sarah L.</div>
+            </div>
 
-        {/* Our Vision */}
-        <div className="border lg:w-[60%] bg-gray-100  rounded-lg px-5 py-10">
-          <h2 className="lg:text-3xl sm:text-2xl font-bold mb-4 text-center">
-            Our Vision
-          </h2>
-          <p className="text-gray-700 text-center max-w-2xl mx-auto">
-            To become a household name for fresh, natural, and sustainable
-            products, while fostering a community that values health, quality,
-            and environmental stewardship.
-          </p>
-        </div>
+            {/* Testimonial 2 */}
+            <div className="bg-white-400 p-6 flex flex-col justify-between shadow-lg rounded-lg">
+              <p className=" italic text-green-400">
+                “Their paneer and ghee are so fresh and pure, it reminds me of
+                my childhood. Highly recommend them!”
+              </p>
+              <div className="mt-4  font-semibold">- Ravi K.</div>
+            </div>
 
-        {/* Our Mission */}
-        <div className="border lg:w-[60%] bg-gray-100  rounded-lg px-5 py-10">
-          <h2 className="lg:text-3xl sm:text-2xl font-bold mb-4 text-center">
-            Our Mission
-          </h2>
-          <p className="text-gray-700 text-center max-w-2xl mx-auto">
-            Our mission is to deliver premium-quality products that enrich daily
-            lives, support sustainable farming, and build trust through
-            exceptional service. We aim to connect people with nature, ensuring
-            that every product reflects our commitment to quality and care.
-          </p>
+            {/* Testimonial 3 */}
+            <div className="bg-white-400 p-6  flex flex-col justify-between shadow-lg rounded-lg">
+              <p className=" italic text-green-400">
+                “I love their commitment to sustainability. Their farming
+                products have helped me adopt eco-friendly practices.”
+              </p>
+              <div className="mt-4  font-semibold">- Priya D.</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

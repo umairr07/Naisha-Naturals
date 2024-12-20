@@ -52,19 +52,11 @@ const Footer = () => {
             Contact Us
           </h3>
           <address className="not-italic space-y-2 text-grayForFooterLinks lg:text-[16px] sm:text-[14px]">
-            <p>205, Saptagiri Towers, Sardar Patel Rd,</p>
-            <p>Mayur Marg, Begumpet, Hyderabad,</p>
-            <p>Telangana 500016</p>
+            <p>123 Green Avenue, New City, Country</p>
             <p>
-              Email:{" "}
-              <a href="mailto:support@pravarshaindustries.com" className="">
-                support@pravarshaindustries.com
-              </a>
+              Email: <span className="">support@naishanaturals.com</span>
             </p>
-            <p>
-              Phone: <a className="">7702999900</a> |{" "}
-              <a className="">7702666699</a>
-            </p>
+            <p>Phone: +1 (234) 567-891</p>
           </address>
         </div>
       </div>

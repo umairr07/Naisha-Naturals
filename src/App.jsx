@@ -22,6 +22,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import CheckoutPage from "./components/Pages/CheckoutPage";
 import TransactionSuccessPage from "./components/Pages/TransactionSuccessPage";
+import ScrollToTop from "./utils/ScrollToTop";
 
 const App = () => {
   const location = useLocation();
@@ -35,7 +36,7 @@ const App = () => {
       <UserContextProvider>
         <CartProvider>
           {!hideHeaderFooter.includes(location.pathname) && <Header />}
-
+          <ScrollToTop />
           <div className={isAuthPage ? "" : "mt-20"}>
             <Routes>
               {/* Home Page */}

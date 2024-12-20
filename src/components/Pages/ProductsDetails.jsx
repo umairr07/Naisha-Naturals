@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
-import { data, newArrivals } from "../../data/data"; // Your data source
+import { data, newArrivals, bestSellers } from "../../data/data"; // Your data source
 import { useContext, useEffect, useState } from "react";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { CartContext } from "../../context/CartContext";
 import { handleSuccess } from "../../utils/Toast";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const ProductsDetails = () => {
   const { id } = useParams();
@@ -13,7 +14,7 @@ const ProductsDetails = () => {
   const [info, setInfo] = useState(false);
 
   useEffect(() => {
-    const combinedProducts = [...data, ...newArrivals];
+    const combinedProducts = [...data, ...newArrivals, ...bestSellers];
     const foundProduct = combinedProducts.find((item) => item.id === id);
     setPrdId(foundProduct);
   }, [id]);
@@ -25,14 +26,14 @@ const ProductsDetails = () => {
   };
 
   return (
-    <div className="flex flex-col items-center py-10 px-4">
+    <div className="flex flex-col items-center py-16 px-4">
       {/* Back Button */}
       <div className="w-full max-w-4xl mb-6">
         <button
           className="flex items-center gap-2 text-gray-600 text-xl"
-          onClick={() => navigate("/")}
+          onClick={() => navigate("/product-cards")}
         >
-          <FaArrowCircleLeft className="text-xl" />
+          <IoMdArrowRoundBack className="text-2xl" />
           Back to All Products
         </button>
       </div>
@@ -49,22 +50,38 @@ const ProductsDetails = () => {
         </div>
 
         {/* Details Section */}
-        <div className="flex-1 space-y-7 p-6">
+        <div className="flex-1 p-6 space-y-5">
           {/* Product Name */}
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            {prdid?.name}
-          </h1>
+          <div className="text-grayForPageHeading">
+            <h1 className="text-4xl font-bold mb-2">{prdid?.name}</h1>
+            <p>By {prdid?.brand}</p>
+          </div>
           {/* Price */}
-          <p className="text-lg text-gray-600 mb-4">
-            <span className="line-through text-red-500">₹{prdid?.price}</span>
-            <span className="ml-2 text-2xl text-gray-800 font-semibold">
-              ₹{prdid?.discountedPrice}
-            </span>
-          </p>
+          <div>
+            <div className="text-lg text-gray-600 mb-0 flex items-center">
+              <p className="line-through text-red-500 mt-1">₹{prdid?.price}</p>
+              <p className="text-3xl text-green-400 font-semibold ml-2">
+                ₹{prdid?.discountedPrice}
+              </p>
+              {prdid?.discount > 0 ? (
+                <p className="ml-5 font-semibold bg-green-400 text-white-400 px-2 rounded-md text-[10px]">
+                  {prdid?.discount}% OFF
+                </p>
+              ) : (
+                <p className="ml-5 font-semibold bg-red-500 text-white-400 px-2 rounded-md text-[10px]">
+                  NO OFF
+                </p>
+              )}
+            </div>
+            <div className="text-grayForPageHeading text-[15px]">
+              <p>{prdid?.unit}</p>
+            </div>
+          </div>
+
           {/* Description */}
           <p className="text-gray-700 mb-6">{prdid?.description}</p>
           {/* Buttons */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 mb-20">
             <button
               onClick={() => {
                 addToCart(prdid);
@@ -121,7 +138,7 @@ const ProductsDetails = () => {
                 <div>
                   <p className="text-green-400 text-[18px]">
                     Storage Instructions :{" "}
-                    <span className="lg:text-[17px] sm:text-[13px] text-grayForPageHeading">
+                    <span className="text-[18px] text-grayForPageHeading">
                       {prdid?.additionalInfo}
                     </span>
                   </p>

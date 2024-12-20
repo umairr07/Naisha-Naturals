@@ -74,21 +74,26 @@ const Header = () => {
                     className="w-10 border border-gray-400 cursor-pointer rounded-full "
                   />
                   {isProfile && (
-                    <div className="absolute z-10 right-5 mt-2 w-56 bg-white-400 border border-gray-300 rounded-lg shadow-lg p-3 flex">
-                      <div className="space-y-3 text-grayForPageHeading">
-                        <h1 className="font-bold">Profile</h1>
-                        <h1 className="text-[15px]">Name : John Doe</h1>
-                        <h1 className="text-[15px]">
-                          Email : johndoe@gmail.com
-                        </h1>
-                        <button
-                          className="bg-green-400 text-white-400 text-[15px] p-1 px-2 rounded-lg"
-                          onClick={handleLogout}
-                        >
-                          Logout
-                        </button>
-                      </div>
-                    </div>
+                    <ul className="absolute z-10 right-5 mt-2 w-56 bg-white-400 border border-gray-300 rounded-lg shadow-lg p-3 text-grayForPageHeading">
+                      <li className="px-4 py-2 hover:bg-green-100 cursor-pointer ">
+                        Profile
+                      </li>
+                      <li className="px-4 py-2 hover:bg-green-100 cursor-pointer  ">
+                        Settings
+                      </li>
+                      <li
+                        className="px-4 py-2 hover:bg-green-100 cursor-pointer "
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </li>
+                      {/* <button
+                        className="bg-green-400 text-white-400 text-[15px] p-1 px-3 ml-3 mt-2 rounded-lg"
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </button> */}
+                    </ul>
                   )}
                 </div>
               </div>

@@ -1,9 +1,9 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import image1 from "../images/Product Images/naishanaturals.jpg";
-import image2 from "../images/Product Images/dairyproducts.jpg";
-import image3 from "../images/Product Images/farmingproducts.jpg";
-import image4 from "../images/Product Images/vegetables.jpg";
+import image2 from "../images/Product Images/dairyy.jpg";
+import image3 from "../images/Product Images/famrprod.jpg";
+import image4 from "../images/Product Images/vegetablee.jpg";
 import image5 from "../images/Product Images/grains.jpg";
 
 const images = [
@@ -51,7 +51,6 @@ const Home = () => {
         infinite={true}
         autoPlay={true}
         autoPlaySpeed={3000}
-        // Adjust some of the carousel settings if needed
         swipeable={true}
         draggable={true}
       >
@@ -60,7 +59,7 @@ const Home = () => {
             <img
               src={img.link}
               alt={`Carousel image ${idx + 1}`}
-              className="w-fit h-fit"
+              className="w-full h-[89vh] "
             />
           </div>
         ))}
