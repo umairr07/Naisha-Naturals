@@ -42,7 +42,7 @@ const Cart = () => {
             cartItems.map((item) => (
               <div
                 key={item.id}
-                className="flex justify-between items-center mb-4 lg:p-4 sm:p-2 border border-gray-300 shadow-md bg-white-400"
+                className="flex justify-between items-center mb-4 lg:p-4 sm:p-2 border border-gray-300 bg-white-400 rounded-lg"
               >
                 {/* Item Details */}
                 <div className="flex items-center lg:gap-4 sm:gap-2">
@@ -99,7 +99,7 @@ const Cart = () => {
               </div>
             ))
           ) : (
-            <div className="py-14 min-h-screen lg:ml-[500px]">
+            <div className="py-14 min-h-screen lg:ml-[500px] ">
               <center className="text-xl text-red-500 py-5">
                 Your Cart is Empty!
               </center>
@@ -116,7 +116,7 @@ const Cart = () => {
 
         {/* Right Section - Summary */}
         {cartItems.length > 0 && (
-          <div className="lg:w-[35%] p-5 border border-gray-300 shadow-md bg-white-400 h-fit">
+          <div className="lg:w-[35%] p-5 border border-gray-300 rounded-lg bg-white-400 h-fit">
             <h3 className="lg:text-xl font-bold mb-4">Order Summary</h3>
             <div className="flex flex-col gap-4">
               {cartItems.map((item) => (

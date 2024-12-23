@@ -23,6 +23,8 @@ import { ToastContainer } from "react-toastify";
 import CheckoutPage from "./components/Pages/CheckoutPage";
 import TransactionSuccessPage from "./components/Pages/TransactionSuccessPage";
 import ScrollToTop from "./utils/ScrollToTop";
+import Profile from "./components/My Profile/Profile";
+import Settings from "./components/Settings";
 
 const App = () => {
   const location = useLocation();
@@ -69,6 +71,10 @@ const App = () => {
               <Route path="/checkout" element={<CheckoutPage />} />
               {/* Transaction Sucessfull Page */}
               <Route path="/success" element={<TransactionSuccessPage />} />
+              {/* My Profile */}
+              <Route path="/myprofile" element={<Profile />} />
+              {/* Settings */}
+              <Route path="/settings" element={<Settings />} />
             </Routes>
           </div>
 

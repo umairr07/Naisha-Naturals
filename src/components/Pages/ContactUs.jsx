@@ -14,9 +14,9 @@ const ContactUs = () => {
     <div className="m-5 py-8">
       <div>
         <img
-          src="https://img.freepik.com/premium-vector/green-rounded-contact-information-vector-icons-business-card-phone-number-email_642540-23.jpg"
+          src="https://img.freepik.com/free-vector/flat-design-illustration-customer-support_23-2148887720.jpg?semt=ais_hybrid"
           alt=""
-          className="m-auto"
+          className="m-auto h-96"
         />
       </div>
       <div className="container mx-auto lg:px-20 py-10">

@@ -9,7 +9,7 @@ const TransactionSuccessPage = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div className="py-32 flex items-center justify-center ">
       <div className="bg-white p-8 rounded-lg shadow-lg lg:w-[450px] sm:w-[350px] text-center border border-gray-400">
         {/* Success Icon */}
         <div className="flex justify-center items-center w-20 h-20 bg-green-100 rounded-full mx-auto mb-6">

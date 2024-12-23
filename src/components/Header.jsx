@@ -75,10 +75,22 @@ const Header = () => {
                   />
                   {isProfile && (
                     <ul className="absolute z-10 right-5 mt-2 w-56 bg-white-400 border border-gray-300 rounded-lg shadow-lg p-3 text-grayForPageHeading">
-                      <li className="px-4 py-2 hover:bg-green-100 cursor-pointer ">
+                      <li
+                        className="px-4 py-2 hover:bg-green-100 cursor-pointer"
+                        onClick={() => {
+                          naviagte("/myprofile");
+                          toggleProfile(!isProfile);
+                        }}
+                      >
                         Profile
                       </li>
-                      <li className="px-4 py-2 hover:bg-green-100 cursor-pointer  ">
+                      <li
+                        className="px-4 py-2 hover:bg-green-100 cursor-pointer"
+                        onClick={() => {
+                          naviagte("/settings");
+                          toggleProfile(!isProfile);
+                        }}
+                      >
                         Settings
                       </li>
                       <li
@@ -98,8 +110,13 @@ const Header = () => {
                 </div>
               </div>
             ) : (
-              <div className="lg:px-4 lg:py-2 sm:px-2 sm:py-[3px] lg:text-[16px] sm:text-[14px] rounded-3xl bg-green-400 text-white-400">
-                <Link to={"/signup"}>Login / Signup</Link>
+              <div className="flex gap-3">
+                <div className="lg:px-4 lg:py-2 sm:px-2 sm:py-[3px] lg:text-[16px] sm:text-[14px] rounded-3xl bg-green-400 hover:bg-green-600 text-white-400">
+                  <Link to={"/signup"}>Signup</Link>
+                </div>
+                <div className="lg:px-4 lg:py-2 sm:px-2 sm:py-[3px] lg:text-[16px] sm:text-[14px] rounded-3xl bg-green-400 hover:bg-green-600  text-white-400">
+                  <Link to={"/login"}>Login</Link>
+                </div>
               </div>
             )}
 
