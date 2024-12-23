@@ -18,7 +18,7 @@ export const BestSeller = () => {
         </h1>
       </div>
       <div
-        className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 lg:px-16
+        className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 lg:px-16
       sm:px-5"
       >
         {bestSeller.map((item) => {

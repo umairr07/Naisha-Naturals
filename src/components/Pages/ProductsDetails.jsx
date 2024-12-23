@@ -39,13 +39,13 @@ const ProductsDetails = () => {
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10 max-w-4xl w-full bg-white-400 rounded-lg border border-gray-400 overflow-hidden">
+      <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10 lg:max-w-4xl md:max-w-xl md:flex md:flex-row w-full bg-white-400 rounded-lg border border-gray-400 overflow-hidden">
         {/* Image Section */}
         <div className="p-6">
           <img
             src={prdid?.image}
             alt={prdid?.name}
-            className="w-full h-auto rounded-lg object-cover border border-gray-300"
+            className="w-full md:w-[200px] sm:w-[200px]  h-auto rounded-lg object-cover border border-gray-300"
           />
         </div>
 

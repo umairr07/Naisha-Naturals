@@ -59,7 +59,7 @@ const Home = () => {
             <img
               src={img.link}
               alt={`Carousel image ${idx + 1}`}
-              className="w-full h-[89vh] "
+              className="w-full lg:h-[89vh] "
             />
           </div>
         ))}
