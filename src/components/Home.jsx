@@ -45,7 +45,7 @@ const responsive = {
 
 const Home = () => {
   return (
-    <div className="relative w-full">
+    <div className="relative w-full z-10">
       <Carousel
         responsive={responsive}
         infinite={true}

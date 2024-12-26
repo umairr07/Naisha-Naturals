@@ -71,7 +71,7 @@ const Header = () => {
                     src={johnImage}
                     alt=""
                     onClick={toggleProfile}
-                    className="w-10 border border-gray-400 cursor-pointer rounded-full "
+                    className="lg:w-10 sm:w-8 border border-gray-400 cursor-pointer rounded-full "
                   />
                   {isProfile && (
                     <ul className="absolute z-10 right-5 mt-2 w-56 bg-white-400 border border-gray-300 rounded-lg shadow-lg p-3 text-grayForPageHeading">
@@ -99,12 +99,6 @@ const Header = () => {
                       >
                         Logout
                       </li>
-                      {/* <button
-                        className="bg-green-400 text-white-400 text-[15px] p-1 px-3 ml-3 mt-2 rounded-lg"
-                        onClick={handleLogout}
-                      >
-                        Logout
-                      </button> */}
                     </ul>
                   )}
                 </div>
@@ -129,8 +123,16 @@ const Header = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="flex flex-col flex-wrap gap-3 justify-end basis-full shadow-xl rounded-xl items-center mt-28 py-5">
-          <Navlinks />
+        <div className="fixed top-0 right-0 h-screen w-56 bg-white-400 shadow-xl flex flex-col justify-start items-start py-5 z-50">
+          <button
+            className="ml-auto mr-4 mt-4 text-gray-500 hover:text-red-500"
+            onClick={() => setIsOpen(false)} // Add a close button
+          >
+            <BiX size={30} />
+          </button>
+          <div className="px-4 w-full">
+            <Navlinks />
+          </div>
         </div>
       )}
     </>

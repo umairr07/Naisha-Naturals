@@ -79,6 +79,9 @@ const ProductsDetails = () => {
                 </p>
                 <p className="text-3xl text-green-400 font-semibold ml-2">
                   ₹{product?.discountedPrice}
+                  <span className="text-xs text-grayForPageHeading">
+                    / {product?.unit[0]}
+                  </span>
                 </p>
                 {product?.discount > 0 ? (
                   <p className="ml-5 font-semibold bg-green-400 text-white-400 px-2 rounded-md text-[10px]">
