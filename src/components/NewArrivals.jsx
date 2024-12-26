@@ -24,16 +24,10 @@ const NewArrivals = () => {
               key={item.id}
               className="relative bg-white-400 border border-gray-300 shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between gap-5"
             >
-              {/* Discount Badge */}
-              {item.discount > 0 ? (
-                <div className="absolute top-0 left-0 bg-green-400 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg z-10">
-                  {item.discount}% OFF
-                </div>
-              ) : (
-                <div className="absolute top-0 left-0 bg-red-500 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg z-10">
-                  NO OFF
-                </div>
-              )}
+              {/* New Badge */}
+              <div className="absolute top-0 left-0 bg-green-400 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg z-10">
+                NEW
+              </div>
 
               {/* Product Image */}
               <div
