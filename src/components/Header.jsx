@@ -35,13 +35,19 @@ const Header = () => {
       <div className="fixed top-0 left-0 right-0 z-50 bg-white-400 shadow-md">
         <div className="flex justify-between flex-wrap lg:px-10 sm:px-3 py-6 border-b border-white-400 items-center">
           <div>
-            <Link
+            {/* <Link
               to={"/"}
               className="lg:text-xl sm:text-[18px] font-semibold italic text-green-400"
             >
               Naisha Naturals
+            </Link> */}
+            <Link to={"/"}>
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Natural_IceCream_Logo.png"
+                alt=""
+                className="w-28"
+              />
             </Link>
-            {/* <img src={logo} alt="" className="w-24 h-10" /> */}
           </div>
 
           <div className="sm:hidden lg:flex md:flex">
