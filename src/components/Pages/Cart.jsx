@@ -58,7 +58,7 @@ const Cart = () => {
                     <p className="text-gray-600 lg:text-sm sm:text-[12px]">
                       <span className="line-through">₹{item.price}</span>
                       <span className="ml-3 text-green-600 font-medium">
-                        ₹{item.discountedPrice} / {item.unit}
+                        ₹{item.discountedPrice} / {item.unit[0]}
                       </span>
                     </p>
                   </div>

@@ -54,7 +54,7 @@ const NewArrivals = () => {
                             ₹{item.price}
                           </span>
                           <span className="ml-2 text-gray-800 font-medium">
-                            ₹{item.discountedPrice} / {item.unit}
+                            ₹{item.discountedPrice} / {item.unit[0]}
                           </span>
                         </p>
                       </div>

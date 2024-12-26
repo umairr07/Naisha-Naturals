@@ -52,8 +52,8 @@ const ProductsDetails = () => {
           Back to All Products
         </button>
       </div>
+      {/* Product Details */}
       <div className="flex flex-col items-center py-2 px-4 mb-10">
-        {/* Product Details */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:gap-10 lg:max-w-4xl md:max-w-xl md:flex md:flex-row w-full bg-white-400 rounded-lg border border-gray-400 overflow-hidden">
           {/* Image Section */}
           <div className="p-6">
@@ -90,8 +90,15 @@ const ProductsDetails = () => {
                   </p>
                 )}
               </div>
-              <div className="text-grayForPageHeading text-[15px]">
-                <p>{product?.unit}</p>
+              <div className="text-grayForPageHeading text-[12px] flex gap-3 mt-3">
+                {product?.unit.map((unit, idx) => (
+                  <p
+                    key={idx}
+                    className="border border-green-400 cursor-pointer px-2 py-1 rounded-lg font-medium"
+                  >
+                    {unit}
+                  </p>
+                ))}
               </div>
             </div>
 
@@ -213,7 +220,7 @@ const ProductsDetails = () => {
                             ₹{item.price}
                           </span>
                           <span className="ml-2 text-gray-800 font-medium">
-                            ₹{item.discountedPrice} / {item.unit}
+                            ₹{item.discountedPrice} / {item.unit[0]}
                           </span>
                         </p>
                       </div>

@@ -1,3 +1,4 @@
+import { FaInstagram, FaTwitter } from "react-icons/fa";
 import johnImage from "../../images/johndoe.jpg";
 
 const Profile = () => {
@@ -6,41 +7,68 @@ const Profile = () => {
     email: "john.doe@example.com",
     phone: "+1234567890",
     address: "123, Main Street, City, Country",
+    dateOfBirth: "January 1, 1990",
+    occupation: "Software Engineer",
+    socialMedia: {
+      linkedin: "https://linkedin.com/in/johndoe",
+      twitter: "https://twitter.com/johndoe",
+    },
     profilePicture: johnImage,
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10">
-      <div className="bg-white-400 shadow-xl rounded-lg w-full lg:max-w-3xl sm:max-w-xl p-8">
-        {/* Centered Image */}
+    <div className="min-h-screen flex items-center justify-center py-10">
+      <div className="bg-white-400 border border-gray-300 rounded-lg w-full lg:max-w-4xl sm:max-w-xl p-8">
+        {/* Profile Header */}
         <div className="flex flex-col items-center">
           <img
             src={userData.profilePicture}
             alt="Profile"
-            className="w-32 h-32 rounded-full border-4 border-green-400 object-cover shadow-md"
+            className="w-36 h-36 rounded-full border-4 border-green-400 object-cover shadow-lg"
           />
-          <h2 className="text-2xl font-semibold text-green-600 mt-4">
+          <h2 className="text-3xl font-bold text-green-600 mt-4">
             {userData.name}
           </h2>
         </div>
-        {/* Email section */}
-        <div className="mt-8 bg-gray-100 rounded-lg p-6">
-          <h3 className="text-lg font-medium text-green-600">Email</h3>
-          <p className="text-gray-700 mt-2">{userData.email}</p>
+
+        {/* User Details */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-8">
+          {/* Email */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">Email</h3>
+            <p className="text-gray-700 mt-2">{userData.email}</p>
+          </div>
+          {/* Phone */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">Phone</h3>
+            <p className="text-gray-700 mt-2">{userData.phone}</p>
+          </div>
+          {/* Address */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">Address</h3>
+            <p className="text-gray-700 mt-2">{userData.address}</p>
+          </div>
+          {/* Date of Birth */}
+          <div className="bg-gray-100 rounded-lg p-6 shadow-md">
+            <h3 className="text-lg font-medium text-green-600">
+              Date of Birth
+            </h3>
+            <p className="text-gray-700 mt-2">{userData.dateOfBirth}</p>
+          </div>
         </div>
-        {/* Phone section */}
-        <div className="mt-8 bg-gray-100 rounded-lg p-6">
-          <h3 className="text-lg font-medium text-green-600">Phone</h3>
-          <p className="text-gray-700 mt-2">{userData.phone}</p>
+
+        {/* Social Media Links */}
+        <div className="bg-gray-100 rounded-lg p-6 shadow-md mt-6">
+          <h3 className="text-lg font-medium text-green-600">Social Media</h3>
+          <div className="flex items-center gap-4 mt-3">
+            <FaInstagram className="text-xl cursor-pointer text-grayForPageHeading" />
+            <FaTwitter className="text-xl cursor-pointer text-grayForPageHeading" />
+          </div>
         </div>
-        {/* Address Section */}
-        <div className="mt-8 bg-gray-100 rounded-lg p-6">
-          <h3 className="text-lg font-medium text-green-600">Address</h3>
-          <p className="text-gray-700 mt-2">{userData.address}</p>
-        </div>
+
         {/* Edit Profile Button */}
         <div className="flex justify-center mt-8">
-          <button className="bg-green-400 hover:bg-green-600 text-white-400 px-6 py-3 rounded-lg shadow-md">
+          <button className="bg-green-400 hover:bg-green-600 text-white-400 px-8 py-3 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105">
             Edit Profile
           </button>
         </div>

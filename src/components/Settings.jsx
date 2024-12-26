@@ -2,7 +2,7 @@ import React from "react";
 
 const Settings = () => {
   return (
-    <div className="min-h-screen bg-gray-100  text-grayForPageHeading flex flex-col items-center py-10">
+    <div className="min-h-screen   text-grayForPageHeading flex flex-col items-center py-10">
       <div className="bg-white-400 rounded-lg shadow-lg w-full max-w-4xl p-6">
         {/* Page Header */}
         <div className="border-b pb-4 mb-6">
@@ -30,9 +30,6 @@ const Settings = () => {
                 <p className="">Email</p>
                 <p className="text-sm text-gray-500">john.doe@example.com</p>
               </div>
-              <button className="text-green-400 hover:text-green-600 text-sm">
-                Edit
-              </button>
             </div>
             <div className="flex justify-between items-center">
               <div>
