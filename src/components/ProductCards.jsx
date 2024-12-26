@@ -223,11 +223,11 @@ const ProductCards = () => {
             >
               {/* Discount Badge */}
               {item.discount > 0 ? (
-                <div className="absolute top-0 left-0 bg-green-400 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg z-10">
+                <div className="absolute top-0 left-0 bg-green-400 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg">
                   {item.discount}% OFF
                 </div>
               ) : (
-                <div className="absolute top-0 left-0 bg-red-500 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg z-10">
+                <div className="absolute top-0 left-0 bg-red-500 text-white-400 text-xs font-bold px-3 py-1 rounded-br-lg ">
                   NO OFF
                 </div>
               )}
@@ -240,7 +240,7 @@ const ProductCards = () => {
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-44 m-auto mt-5 h-36 object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-44 m-auto mt-10 h-36 object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
